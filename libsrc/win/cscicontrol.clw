@@ -2,22 +2,21 @@
 !region Notices
 ! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 !
 !    This file is part of Devuna-Scintilla (https://github.com/Devuna/Devuna-Scintilla)
 !
 !    Devuna-Scintilla is free software: you can redistribute it and/or modify
-!    it under the terms of the GNU General Public License as published by
-!    the Free Software Foundation, either version 3 of the License, or
-!    (at your option) any later version.
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
 !
 !    Devuna-Scintilla is distributed in the hope that it will be useful,
 !    but WITHOUT ANY WARRANTY; without even the implied warranty of
 !    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-!    GNU General Public License for more details.
+!    MIT License for more details.
 !
-!    You should have received a copy of the GNU General Public License
-!    along with Devuna-Scintilla.  If not, see <http://www.gnu.org/licenses/>.
+!    You should have received a copy of the MIT License
+!    along with Devuna-Scintilla.  If not, see <https://opensource.org/licenses/MIT>.
 ! ================================================================================
 !endregion Notices
 !========================================================================================
@@ -27,7 +26,7 @@
 !Revisions:
 !==========
 ! 2012.02.12    KCR Added missing methods
-! 2003.07.15    KCR Added project PRAGMA statements to control class linking 
+! 2003.07.15    KCR Added project PRAGMA statements to control class linking
 !                   and inclusion of sciutil.c into the application project.
 !                   Thanks to Mark Goldberg for the suggestion.
 ! 2003.11.28    KCR added deprecated keyword lists for use with new
@@ -37,7 +36,7 @@
 !========================================================================================
 
   PRAGMA('compile(SCIUTIL.C)')                                      ! 2003.07.15 KCR
-                                                                    
+
   ! Include the class declaration
   INCLUDE('CSciControl.inc'),ONCE
 
@@ -106,7 +105,7 @@ lbHatch       LONG
                      LONG uMsg,     |
                      LONG wParam,   |
                      LONG lParam),LONG,RAW,PROC,NAME('_CallSciMsgProc@FPFllll_lllll')
-      GetXPMData(LONG lImage),LONG,NAME('_GetXPMData')                
+      GetXPMData(LONG lImage),LONG,NAME('_GetXPMData')
     END
 
     MODULE('win32API')
@@ -137,7 +136,7 @@ lbHatch       LONG
                     LONG lParam),LONG,PASCAL,NAME('DefWindowProcA')
 
       DestroyWindow(UNSIGNED hWnd),BOOL,PASCAL,PROC
-      
+
       GetDlgItem(UNSIGNED hDlg, UNSIGNED nIDDlgItem),LONG,PASCAL
 
       GetWindowRect(UNSIGNED hWnd,    | handle to window
@@ -365,7 +364,7 @@ ReturnValue BOOL,AUTO
 ! purpose:  Set the Control Hide Property
 ! inputs :  BOOL True to Hide the control window, False to Show
 ! outputs:  The control window is hidden/shown
-! returns:  
+! returns:
 ! =======================================================================================
 CSciControl.SetHide               PROCEDURE(BOOL bHide) !,VIRTUAL                 ! Set Hide Property
 
@@ -382,7 +381,7 @@ CSciControl.SetHide               PROCEDURE(BOOL bHide) !,VIRTUAL               
 ! =======================================================================================
 ! CSciControl.GetContextMenuEvent
 ! purpose:  Get the Context Menu Event Property
-! inputs :  
+! inputs :
 ! outputs:  The Event that is posted to the window when a WM_CONTEXTMENU event occurs
 !           ie when the user right clicks on the control when the control default popup
 !           menu has been disabled.
@@ -408,7 +407,7 @@ ReturnValue LONG,AUTO
 ! purpose:  Set the Control Context Menu Event Property
 ! inputs :  LONG The Event ID to be used for context menu notification
 ! outputs:  The control context menu notification event is set
-! returns:  
+! returns:
 ! =======================================================================================
 CSciControl.SetContextMenuEvent PROCEDURE(LONG lNotifyEvent) !,VIRTUAL
 
@@ -1441,13 +1440,13 @@ CSciControl.MarkerSetBack   PROCEDURE(LONG lMarkerNumber, LONG lBack) !,VIRTUAL
 ! =======================================================================================
 CSciControl.MarkerSetBackSelected   PROCEDURE(LONG lMarkerNumber, LONG lBack)  !,VIRTUAL
   CODE
-  
+
   IF SELF.bInitialised
      SELF.SendMessage(SCI_MARKERSETBACKSELECTED, lMarkerNumber, lBack)
   END
-  
+
   RETURN
-  
+
 ! =======================================================================================
 ! CSciControl.MarkerEnableHighlight
 ! purpose:
@@ -1457,13 +1456,13 @@ CSciControl.MarkerSetBackSelected   PROCEDURE(LONG lMarkerNumber, LONG lBack)  !
 ! =======================================================================================
 CSciControl.MarkerEnableHighlight   PROCEDURE(BOOL enabled) !,VIRTUAL
   CODE
-  
+
   IF SELF.bInitialised
      SELF.SendMessage(SCI_MARKERENABLEHIGHLIGHT, enabled, 0)
   END
-  
+
   RETURN
-  
+
 
 ! =======================================================================================
 ! CSciControl.MarkerAdd
@@ -1625,8 +1624,8 @@ CSciControl.MarkerAddSet   PROCEDURE(LONG lLine, LONG lSet) !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_MARKERADDSET, lLine, lSet)
   END
-  
-  RETURN     
+
+  RETURN
 
 
 ! =======================================================================================
@@ -1642,7 +1641,7 @@ CSciControl.MarkerSetAlpha PROCEDURE(LONG lMarkerNumber, LONG lAlpha) !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_MARKERSETALPHA, lMarkerNumber, lAlpha)
   END
-  
+
   RETURN
 
 
@@ -2443,7 +2442,7 @@ CSciControl.SetSelBack  PROCEDURE(BOOL bUseSetting, LONG lBack) !,VIRTUAL
 ! =======================================================================================
 ! CSciControl.GetSelAlpha
 ! purpose:  Get the alpha of the selection.
-! inputs :  
+! inputs :
 ! outputs:
 ! returns:  lAlpha
 ! =======================================================================================
@@ -2482,7 +2481,7 @@ CSciControl.SetSelAlpha PROCEDURE(LONG lAlpha) !,VIRTUAL
 ! =======================================================================================
 ! CSciControl.GetSelEOLFilled
 ! purpose:  Is the selection end of line filled?
-! inputs :  
+! inputs :
 ! outputs:
 ! returns:  bFilled
 ! =======================================================================================
@@ -2634,7 +2633,7 @@ CSciControl.StyleSetVisible PROCEDURE(LONG lStyle, BOOL bVisible) !,VIRTUAL
 ! CSciControl.StyleGetVisible
 ! purpose:
 ! inputs :  lStyle
-! outputs:  
+! outputs:
 ! returns:  Visible
 ! =======================================================================================
 CSciControl.StyleGetVisible  PROCEDURE(LONG lStyle) !LONG,VIRTUAL
@@ -2808,7 +2807,7 @@ CSciControl.IndicSetFore    PROCEDURE(LONG lIndic, LONG lFore) !,VIRTUAL
 
 ! =======================================================================================
 ! CSciControl.IndicGetFore
-! purpose:  
+! purpose:
 ! inputs :  lIndic
 ! outputs:
 ! returns:  LONG
@@ -2834,7 +2833,7 @@ ReturnValue LONG,AUTO
 ! inputs :  lIndic
 !           bUnder
 ! outputs:
-! returns:  
+! returns:
 ! =======================================================================================
 CSciControl.IndicSetUnder  PROCEDURE(LONG lIndic, BOOL bUnder) !,VIRTUAL
 
@@ -2845,8 +2844,8 @@ CSciControl.IndicSetUnder  PROCEDURE(LONG lIndic, BOOL bUnder) !,VIRTUAL
   END
 
   RETURN                                    ! Exit Procedure
-  
-  
+
+
 ! =======================================================================================
 ! CSciControl.IndicGetUnder
 ! purpose:  Retrieve whether indicator drawn under or over text.
@@ -2928,7 +2927,7 @@ CSciControl.SetWhitespaceSize PROCEDURE(LONG lSize)   !,VIRTUAL
 ! =======================================================================================
 ! CSciControl.GetWhitespaceSize
 ! purpose:  Get the size of the dots used to mark space characters.
-! inputs :  
+! inputs :
 ! outputs:
 ! returns:  WhitespaceSize
 ! =======================================================================================
@@ -3688,7 +3687,7 @@ CSciControl.AutoCSetMaxWidth  PROCEDURE(LONG lCharacterCount) !,VIRTUAL
 ! =======================================================================================
 ! CSciControl.AutoCGetMaxWidth
 ! purpose:  Get the maximum width, in characters, of auto-completion and user lists.
-! inputs :  
+! inputs :
 ! outputs:
 ! returns:  lCharacterCount
 ! =======================================================================================
@@ -3716,7 +3715,7 @@ ReturnValue LONG,AUTO
 ! returns:
 ! =======================================================================================
 CSciControl.AutoCSetMaxHeight PROCEDURE(LONG lRowCount) !,VIRTUAL
-  
+
   CODE                                      ! Enter Procedure
 
   IF SELF.bInitialised
@@ -3729,7 +3728,7 @@ CSciControl.AutoCSetMaxHeight PROCEDURE(LONG lRowCount) !,VIRTUAL
 ! =======================================================================================
 ! CSciControl.AutoCGetMaxHeight
 ! purpose:  Get the maximum height, in rows, of auto-completion and user lists.
-! inputs :  
+! inputs :
 ! outputs:
 ! returns:  lRowCount
 ! =======================================================================================
@@ -5602,7 +5601,7 @@ ReturnValue LONG,AUTO
 
   RETURN(ReturnValue)                       ! Exit Procedure
 
- 
+
 ! =======================================================================================
 ! CSciControl.SetFoldLevel
 ! purpose:
@@ -5752,7 +5751,7 @@ ReturnValue BOOL,AUTO
 ! =======================================================================================
 ! CSciControl.GetAllLinesVisible
 ! purpose:  Are all lines visible?
-! inputs :  
+! inputs :
 ! outputs:
 ! returns:  True or False
 ! =======================================================================================
@@ -6095,7 +6094,7 @@ ReturnValue LONG,AUTO
 ! purpose:  Set the display mode of visual flags for wrapped lines.
 ! inputs :  lWrapVisualFlags
 ! outputs:
-! returns:  
+! returns:
 ! =======================================================================================
 CSciControl.SetWrapVisualFlags   PROCEDURE(LONG lWrapVisualFlags) !,VIRTUAL
 
@@ -6134,7 +6133,7 @@ ReturnValue LONG,AUTO
 ! purpose:  Set the location of visual flags for wrapped lines.
 ! inputs :  lWrapVisualFlagsLocation
 ! outputs:
-! returns:  
+! returns:
 ! =======================================================================================
 CSciControl.SetWrapVisualFlagsLocation PROCEDURE(LONG lWrapVisualFlagsLocation) !,VIRTUAL
 
@@ -6173,7 +6172,7 @@ ReturnValue LONG,AUTO
 ! purpose:  Set the start indent for wrapped lines.
 ! inputs :  lIndent
 ! outputs:
-! returns:  
+! returns:
 ! =======================================================================================
 CSciControl.SetWrapStartIndent   PROCEDURE(LONG lIndent) !,VIRTUAL
 
@@ -6212,7 +6211,7 @@ ReturnValue LONG,AUTO
 ! purpose:  Sets how wrapped sublines are placed. Default is fixed.
 ! inputs :  lMode
 ! outputs:
-! returns:  
+! returns:
 ! =======================================================================================
 CSciControl.SetWrapIndentMode    PROCEDURE(LONG lMode) !,VIRTUAL
 
@@ -6587,7 +6586,7 @@ ReturnValue LONG,AUTO
   END
 
   RETURN ReturnValue                        ! Exit Procedure
-  
+
 
 ! =======================================================================================
 ! CSciControl.SetFirstVisibleLine
@@ -6657,7 +6656,7 @@ CSciControl.GetTag   PROCEDURE(LONG lTagNumber, *CSTRING szTagValue) !,LONG,VIRT
 ReturnValue LONG,AUTO
 
   CODE
-  
+
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GETTAG, lTagNumber, ADDRESS(szTagValue))
   ELSE
@@ -7878,7 +7877,7 @@ CSciControl.BraceHighlightIndicator PROCEDURE(BOOL bUseBraceHighlightIndicator, 
      SELF.SendMessage(SCI_BRACEHIGHLIGHTINDICATOR, bUseBraceHighlightIndicator, lIndicator)
   END
 
-  RETURN                            
+  RETURN
 
 
 ! =======================================================================================
@@ -7908,14 +7907,14 @@ CSciControl.BraceBadLight   PROCEDURE(LONG lPos) !,VIRTUAL
 ! returns:
 ! =======================================================================================
 CSciControl.BraceBadLightIndicator  PROCEDURE(BOOL bUseBraceBadLightIndicator, LONG lIndicator) !,VIRTUAL
- 
+
   CODE                                      ! Enter Procedure
 
   IF SELF.bInitialised
      SELF.SendMessage(SCI_BRACEBADLIGHTINDICATOR, bUseBraceBadLightIndicator, lIndicator)
   END
 
-  RETURN                            
+  RETURN
 
 
 ! =======================================================================================
@@ -8910,8 +8909,8 @@ CSciControl.SetHotspotActiveFore    PROCEDURE(BOOL bUseSetting, LONG lFore) !,VI
 ! =======================================================================================
 ! CSciControl.GetHotspotActiveFore
 ! purpose:
-! inputs :  
-! outputs:  
+! inputs :
+! outputs:
 ! returns:  lFore
 ! =======================================================================================
 CSciControl.GetHotspotActiveFore    PROCEDURE() !,LONG,VIRTUAL
@@ -8948,8 +8947,8 @@ CSciControl.SetHotspotActiveBack    PROCEDURE(BOOL bUseSetting, LONG lBack) !,VI
 ! =======================================================================================
 ! CSciControl.GetHotspotActiveBack
 ! purpose:
-! inputs :  
-! outputs:  
+! inputs :
+! outputs:
 ! returns:  lBack
 ! =======================================================================================
 CSciControl.GetHotspotActiveBack    PROCEDURE() !,LONG,VIRTUAL
@@ -8962,7 +8961,7 @@ ReturnValue LONG,AUTO
   END
 
   RETURN ReturnValue                        ! Exit Procedure
-  
+
 
 ! =======================================================================================
 ! CSciControl.SetHotspotActiveUnderline
@@ -8985,7 +8984,7 @@ CSciControl.SetHotspotActiveUnderline   PROCEDURE(BOOL bUnderline) !,VIRTUAL
 ! =======================================================================================
 ! CSciControl.GetHotspotActiveUnderline
 ! purpose:
-! inputs :  
+! inputs :
 ! outputs:
 ! returns:  bUnderline
 ! =======================================================================================
@@ -8999,15 +8998,15 @@ ReturnValue    BOOL,AUTO
   END
 
   RETURN ReturnValue                        ! Exit Procedure
-  
-  
-  
+
+
+
 ! =======================================================================================
 ! CSciControl.SetHotspotSingleLine
 ! purpose:  Limit hotspots to single line so hotspots on two lines don't merge.
 ! inputs :  bSingleLine
 ! outputs:
-! returns:  
+! returns:
 ! =======================================================================================
 CSciControl.SetHotspotSingleLine            PROCEDURE(BOOL bSingleLine) !,VIRTUAL
   CODE                                      ! Enter Procedure
@@ -9022,7 +9021,7 @@ CSciControl.SetHotspotSingleLine            PROCEDURE(BOOL bSingleLine) !,VIRTUA
 ! =======================================================================================
 ! CSciControl.GetHotspotSingleLine
 ! purpose:  Get the HotspotSingleLine property
-! inputs :  
+! inputs :
 ! outputs:
 ! returns:  bSingleLine
 ! =======================================================================================
@@ -9035,8 +9034,8 @@ ReturnValue    BOOL,AUTO
      ReturnValue = SELF.SendMessage(SCI_GETHOTSPOTSINGLELINE, 0, 0)
   END
 
-  RETURN ReturnValue                        ! Exit Procedure 
-  
+  RETURN ReturnValue                        ! Exit Procedure
+
 
 ! =======================================================================================
 ! CSciControl.ParaDown
@@ -9200,9 +9199,9 @@ CSciControl.SetSelectionMode                PROCEDURE(LONG lMode) !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetSelectionMode, lMode, 0)
   END
-  
+
   RETURN
-  
+
 CSciControl.GetSelectionMode                PROCEDURE() !,LONG,VIRTUAL
 ! Get the mode of the current selection.
 ReturnValue    LONG(FALSE)
@@ -9211,9 +9210,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetSelectionMode, 0, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.GetLineSelStartPosition         PROCEDURE(LONG lLine) !,LONG,VIRTUAL
 ! Retrieve the position of the start of the selection at the given line (INVALID_POSITION if no selection on this line).
@@ -9223,9 +9222,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetLineSelStartPosition, lLine, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.GetLineSelEndPosition           PROCEDURE(LONG lLine) !,LONG,VIRTUAL
 ! Retrieve the position of the end of the selection at the given line (INVALID_POSITION if no selection on this line).
@@ -9235,9 +9234,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetLineSelEndPosition, lLine, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.LineDownRectExtend              PROCEDURE() !,VIRTUAL
 ! RectExtended rectangular selection moves
@@ -9247,9 +9246,9 @@ CSciControl.LineDownRectExtend              PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_LineDownRectExtend, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.LineUpRectExtend                PROCEDURE() !,VIRTUAL
 ! Move caret up one line, extending rectangular selection to new caret position.
@@ -9258,9 +9257,9 @@ CSciControl.LineUpRectExtend                PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_LineUpRectExtend, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.CharLeftRectExtend              PROCEDURE() !,VIRTUAL
 ! Move caret left one character, extending rectangular selection to new caret position.
@@ -9269,9 +9268,9 @@ CSciControl.CharLeftRectExtend              PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_CharLeftRectExtend, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.CharRightRectExtend             PROCEDURE() !,VIRTUAL
 ! Move caret right one character, extending rectangular selection to new caret position.
@@ -9280,9 +9279,9 @@ CSciControl.CharRightRectExtend             PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_CharRightRectExtend, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.HomeRectExtend                  PROCEDURE() !,VIRTUAL
 ! Move caret to first position on line, extending rectangular selection to new caret position.
@@ -9291,9 +9290,9 @@ CSciControl.HomeRectExtend                  PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_HomeRectExtend, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.VCHomeRectExtend                PROCEDURE() !,VIRTUAL
 ! Move caret to before first visible character on line.
@@ -9304,9 +9303,9 @@ CSciControl.VCHomeRectExtend                PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_VCHomeRectExtend, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.LineEndRectExtend               PROCEDURE() !,VIRTUAL
 ! Move caret to last position on line, extending rectangular selection to new caret position.
@@ -9315,9 +9314,9 @@ CSciControl.LineEndRectExtend               PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_LineEndRectExtend, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.PageUpRectExtend                PROCEDURE() !,VIRTUAL
 ! Move caret one page up, extending rectangular selection to new caret position.
@@ -9326,9 +9325,9 @@ CSciControl.PageUpRectExtend                PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_PageUpRectExtend, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.PageDownRectExtend              PROCEDURE() !,VIRTUAL
 ! Move caret one page down, extending rectangular selection to new caret position.
@@ -9337,9 +9336,9 @@ CSciControl.PageDownRectExtend              PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_PageDownRectExtend, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.StutteredPageUp                 PROCEDURE() !,VIRTUAL
 ! Move caret to top of page, or one page up if already at top of page.
@@ -9348,9 +9347,9 @@ CSciControl.StutteredPageUp                 PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_StutteredPageUp, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.StutteredPageUpExtend           PROCEDURE() !,VIRTUAL
 ! Move caret to top of page, or one page up if already at top of page, extending selection to new caret position.
@@ -9359,9 +9358,9 @@ CSciControl.StutteredPageUpExtend           PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_StutteredPageUpExtend, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.StutteredPageDown               PROCEDURE() !,VIRTUAL
 ! Move caret to bottom of page, or one page down if already at bottom of page.
@@ -9370,9 +9369,9 @@ CSciControl.StutteredPageDown               PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_StutteredPageDown, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.StutteredPageDownExtend         PROCEDURE() !,VIRTUAL
 ! Move caret to bottom of page, or one page down if already at bottom of page, extending selection to new caret position.
@@ -9381,9 +9380,9 @@ CSciControl.StutteredPageDownExtend         PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_StutteredPageDownExtend, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.WordLeftEnd                     PROCEDURE() !,VIRTUAL
 ! Move caret left one word, position cursor at end of word.
@@ -9392,9 +9391,9 @@ CSciControl.WordLeftEnd                     PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_WordLeftEnd, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.WordLeftEndExtend               PROCEDURE() !,VIRTUAL
 ! Move caret left one word, position cursor at end of word, extending selection to new caret position.
@@ -9403,9 +9402,9 @@ CSciControl.WordLeftEndExtend               PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_WordLeftEndExtend, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.WordRightEnd                    PROCEDURE() !,VIRTUAL
 ! Move caret right one word, position cursor at end of word.
@@ -9414,9 +9413,9 @@ CSciControl.WordRightEnd                    PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_WordRightEnd, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.WordRightEndExtend              PROCEDURE() !,VIRTUAL
 ! Move caret right one word, position cursor at end of word, extending selection to new caret position.
@@ -9425,9 +9424,9 @@ CSciControl.WordRightEndExtend              PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_WordRightEndExtend, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.SetWhitespaceChars              PROCEDURE(*CSTRING szCharacters) !,VIRTUAL
 ! Set the set of characters making up whitespace for when moving or selecting by word.
@@ -9437,9 +9436,9 @@ CSciControl.SetWhitespaceChars              PROCEDURE(*CSTRING szCharacters) !,V
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetWhitespaceChars, 0, ADDRESS(szCharacters))
   END
-  
+
   RETURN
-  
+
 
 CSciControl.SetCharsDefault                 PROCEDURE() !,VIRTUAL
 ! Reset the set of characters for whitespace and word characters to the defaults.
@@ -9448,9 +9447,9 @@ CSciControl.SetCharsDefault                 PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetCharsDefault, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.AutoCGetCurrent                 PROCEDURE() !,LONG,VIRTUAL
 ! Get currently selected item position in the auto-completion list
@@ -9460,9 +9459,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_AutoCGetCurrent, 0, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.AutoCGetCurrentText             PROCEDURE(*CSTRING szCurrentText) !,LONG,VIRTUAL
 ! Get currently selected item text in the auto-completion list
@@ -9473,9 +9472,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_AutoCGetCurrentText, 0, ADDRESS(szCurrentText))
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.Allocate                        PROCEDURE(LONG lBytes) !,VIRTUAL
 ! Enlarge the document to a particular size of text bytes.
@@ -9484,9 +9483,9 @@ CSciControl.Allocate                        PROCEDURE(LONG lBytes) !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_Allocate, lBytes, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.TargetAsUTF8                    PROCEDURE(*CSTRING szUTF8) !,LONG,VIRTUAL
 ! Returns the target converted to UTF8.
@@ -9497,9 +9496,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_TargetAsUTF8, 0, ADDRESS(szUTF8))
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.SetLengthForEncode              PROCEDURE(LONG lBytes) !,VIRTUAL
 ! Set the length of the utf8 argument for calling EncodedFromUTF8.
@@ -9509,9 +9508,9 @@ CSciControl.SetLengthForEncode              PROCEDURE(LONG lBytes) !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetLengthForEncode, lBytes, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.EncodedFromUTF8                 PROCEDURE(*CSTRING szUtf8, *CSTRING szEncoded) !,LONG,VIRTUAL
 ! Translates a UTF8 string into the document encoding.
@@ -9523,9 +9522,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_EncodedFromUTF8, ADDRESS(szUtf8), ADDRESS(szEncoded))
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.FindColumn                      PROCEDURE(LONG lLine, LONG lColumn) !,LONG,VIRTUAL
 ! Find the position of a column on a line taking into account tabs and
@@ -9536,9 +9535,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_FindColumn, lLine, lColumn)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.GetCaretSticky                  PROCEDURE() !,LONG,VIRTUAL
 ! Can the caret preferred x position only be changed by explicit movement commands?
@@ -9548,9 +9547,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetCaretSticky, 0, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.SetCaretSticky                  PROCEDURE(LONG lUseCaretStickyBehaviour) !,VIRTUAL
 ! Stop the caret preferred x position changing when the user types.
@@ -9559,9 +9558,9 @@ CSciControl.SetCaretSticky                  PROCEDURE(LONG lUseCaretStickyBehavi
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetCaretSticky, lUseCaretStickyBehaviour, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.ToggleCaretSticky               PROCEDURE() !,VIRTUAL
 ! Switch between sticky and non-sticky: meant to be bound to a key.
@@ -9570,9 +9569,9 @@ CSciControl.ToggleCaretSticky               PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_ToggleCaretSticky, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.SetPasteConvertEndings          PROCEDURE(BOOL bConvert) !,VIRTUAL
 ! Enable/Disable convert-on-paste for line endings
@@ -9581,9 +9580,9 @@ CSciControl.SetPasteConvertEndings          PROCEDURE(BOOL bConvert) !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetPasteConvertEndings, bConvert, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.GetPasteConvertEndings          PROCEDURE() !,BOOL,VIRTUAL
 ! Get convert-on-paste setting
@@ -9593,9 +9592,9 @@ ReturnValue    BOOL(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetPasteConvertEndings, 0, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.SelectionDuplicate              PROCEDURE() !,VIRTUAL
 ! Duplicate the selection. If selection empty duplicate the line containing the caret.
@@ -9604,9 +9603,9 @@ CSciControl.SelectionDuplicate              PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SelectionDuplicate, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.SetCaretLineBackAlpha           PROCEDURE(LONG lAlpha) !,VIRTUAL
 ! Set background alpha of the caret line.
@@ -9615,21 +9614,21 @@ CSciControl.SetCaretLineBackAlpha           PROCEDURE(LONG lAlpha) !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetCaretLineBackAlpha, lAlpha, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.GetCaretLineBackAlpha           PROCEDURE() !,LONG,VIRTUAL
 ! Get the background alpha of the caret line.
 ReturnValue    LONG(FALSE)
   CODE
- 
+
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetCaretLineBackAlpha, 0, 0)
   END
- 
+
   RETURN ReturnValue
-  
+
 
 CSciControl.SetCaretStyle                   PROCEDURE(LONG lCaretStyle) !,VIRTUAL
 ! Set the style of the caret to be drawn.
@@ -9638,21 +9637,21 @@ CSciControl.SetCaretStyle                   PROCEDURE(LONG lCaretStyle) !,VIRTUA
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetCaretStyle, lCaretStyle, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.GetCaretStyle                   PROCEDURE() !,LONG,VIRTUAL
 ! Returns the current style of the caret.
 ReturnValue    LONG(FALSE)
   CODE
- 
+
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetCaretStyle, 0, 0)
   END
- 
+
   RETURN ReturnValue
-  
+
 
 CSciControl.SetIndicatorCurrent             PROCEDURE(LONG lIndicator) !,VIRTUAL
 ! Set the indicator used for IndicatorFillRange and IndicatorClearRange
@@ -9661,9 +9660,9 @@ CSciControl.SetIndicatorCurrent             PROCEDURE(LONG lIndicator) !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetIndicatorCurrent, lIndicator, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.GetIndicatorCurrent             PROCEDURE() !,LONG,VIRTUAL
 ! Get the current indicator
@@ -9673,9 +9672,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetIndicatorCurrent, 0, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.SetIndicatorValue               PROCEDURE(LONG lValue) !,VIRTUAL
 ! Set the value used for IndicatorFillRange
@@ -9684,9 +9683,9 @@ CSciControl.SetIndicatorValue               PROCEDURE(LONG lValue) !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetIndicatorValue, lValue, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.GetIndicatorValue               PROCEDURE() !,LONG,VIRTUAL
 ! Get the current indicator vaue
@@ -9696,9 +9695,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetIndicatorValue, 0, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.IndicatorFillRange              PROCEDURE(LONG lPosition, LONG lFillLength) !,VIRTUAL
 ! Turn a indicator on over a range.
@@ -9707,9 +9706,9 @@ CSciControl.IndicatorFillRange              PROCEDURE(LONG lPosition, LONG lFill
   IF SELF.bInitialised
      SELF.SendMessage(SCI_IndicatorFillRange, lPosition, lFillLength)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.IndicatorClearRange             PROCEDURE(LONG lPosition, LONG lClearLength) !,VIRTUAL
 ! Turn a indicator off over a range.
@@ -9718,9 +9717,9 @@ CSciControl.IndicatorClearRange             PROCEDURE(LONG lPosition, LONG lClea
   IF SELF.bInitialised
      SELF.SendMessage(SCI_IndicatorClearRange, lPosition, lClearLength)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.IndicatorAllOnFor               PROCEDURE(LONG lPosition) !,LONG,VIRTUAL
 ! Are any indicators present at position?
@@ -9730,21 +9729,21 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_IndicatorAllOnFor, lPosition, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.IndicatorValueAt                PROCEDURE(LONG lIndicator, LONG lPosition) !,LONG,VIRTUAL
 ! What value does a particular indicator have at at a position?
 ReturnValue    LONG(FALSE)
   CODE
- 
+
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_IndicatorValueAt, lIndicator, lPosition)
   END
- 
+
   RETURN ReturnValue
-  
+
 
 CSciControl.IndicatorStart                  PROCEDURE(LONG lIndicator, LONG lPosition) !,LONG,VIRTUAL
 ! Where does a particular indicator start?
@@ -9754,9 +9753,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_IndicatorStart, lIndicator, lPosition)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.IndicatorEnd                    PROCEDURE(LONG lIndicator, LONG lPosition) !,LONG,VIRTUAL
 ! Where does a particular indicator end?
@@ -9766,9 +9765,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_IndicatorEnd, lIndicator, lPosition)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.SetPositionCache                PROCEDURE(LONG lSize) !,VIRTUAL
 ! Set number of entries in position cache
@@ -9777,9 +9776,9 @@ CSciControl.SetPositionCache                PROCEDURE(LONG lSize) !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetPositionCache, lSize, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.GetPositionCache                PROCEDURE() !,LONG,VIRTUAL
 ! How many entries are allocated to the position cache?
@@ -9789,9 +9788,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetPositionCache, 0, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.CopyAllowLine                   PROCEDURE() !,VIRTUAL
 ! Copy the selection, if selection empty copy the line with the caret
@@ -9800,56 +9799,56 @@ CSciControl.CopyAllowLine                   PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_CopyAllowLine, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.GetCharacterPointer             PROCEDURE() !,LONG,VIRTUAL
 ! Compact the document buffer and return a read-only pointer to the
 ! characters in the document.
 ReturnValue    LONG(FALSE)
   CODE
- 
+
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetCharacterPointer, 0, 0)
   END
- 
+
   RETURN ReturnValue
-  
+
 
 CSciControl.SetKeysUnicode                  PROCEDURE(BOOL bKeysUnicode) !,VIRTUAL
 ! Always interpret keyboard input as Unicode
   CODE
- 
+
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetKeysUnicode, bKeysUnicode, 0)
   END
- 
+
   RETURN
-  
+
 
 CSciControl.GetKeysUnicode                  PROCEDURE() !,BOOL,VIRTUAL
 ! Are keys always interpreted as Unicode?
 ReturnValue    BOOL(FALSE)
   CODE
- 
+
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetKeysUnicode, 0, 0)
   END
- 
+
   RETURN ReturnValue
-  
+
 
 CSciControl.IndicSetAlpha                   PROCEDURE(LONG lIndicator, LONG lAlpha) !,VIRTUAL
 ! Set the alpha fill colour of the given indicator.
   CODE
- 
+
   IF SELF.bInitialised
      SELF.SendMessage(SCI_IndicSetAlpha, lIndicator, lAlpha)
   END
- 
+
   RETURN
-  
+
 
 CSciControl.IndicGetAlpha                   PROCEDURE(LONG lIndicator) !,LONG,VIRTUAL
 ! Get the alpha fill colour of the given indicator.
@@ -9859,67 +9858,67 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_IndicGetAlpha, lIndicator, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.IndicSetOutlineAlpha            PROCEDURE(LONG lIndicator, LONG lAlpha) !,VIRTUAL
 ! Set the alpha outline colour of the given indicator.
   CODE
- 
+
   IF SELF.bInitialised
      SELF.SendMessage(SCI_IndicSetOutlineAlpha, lIndicator, lAlpha)
   END
- 
+
   RETURN
-  
+
 
 CSciControl.IndicGetOutlineAlpha            PROCEDURE(LONG lIndicator) !,LONG,VIRTUAL
 ! Get the alpha outline colour of the given indicator.
 ReturnValue    LONG(FALSE)
 
   CODE
-  
+
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_IndicGetOutlineAlpha, lIndicator, 0)
   END
- 
+
   RETURN ReturnValue
-  
+
 
 CSciControl.SetExtraAscent                  PROCEDURE(LONG lExtraAscent) !,VIRTUAL
 ! Set extra ascent for each line
   CODE
- 
+
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetExtraAscent, lExtraAscent, 0)
   END
- 
+
   RETURN
-  
+
 
 CSciControl.GetExtraAscent                  PROCEDURE() !,LONG,VIRTUAL
 ! Get extra ascent for each line
 ReturnValue    LONG(FALSE)
   CODE
- 
+
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetExtraAscent, 0, 0)
   END
- 
+
   RETURN ReturnValue
-  
+
 
 CSciControl.SetExtraDescent                 PROCEDURE(LONG lExtraDescent) !,VIRTUAL
 ! Set extra descent for each line
   CODE
- 
+
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetExtraDescent, lExtraDescent, 0)
   END
- 
+
   RETURN
-  
+
 
 CSciControl.GetExtraDescent                 PROCEDURE() !,LONG,VIRTUAL
 ! Get extra descent for each line
@@ -9929,9 +9928,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetExtraDescent, 0, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.MarkerSymbolDefined             PROCEDURE(LONG lMarkerNumber) !,LONG,VIRTUAL
 ! Which symbol was defined for markerNumber with MarkerDefine
@@ -9941,33 +9940,33 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_MarkerSymbolDefined, lMarkerNumber,0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.MarginSetText                   PROCEDURE(LONG lLine, *CSTRING szText) !,VIRTUAL
 ! Set the text in the text margin for a line
   CODE
- 
+
   IF SELF.bInitialised
      SELF.SendMessage(SCI_MarginSetText, lLine, ADDRESS(szText))
   END
- 
+
   RETURN
-  
+
 
 CSciControl.MarginGetText                   PROCEDURE(LONG lLine, *CSTRING szText) !,LONG,VIRTUAL
 ! Get the text in the text margin for a line
 ReturnValue    LONG(FALSE)
-  
+
   CODE
-  
+
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_MarginGetText, lLine, ADDRESS(szText))
   END
- 
+
   RETURN ReturnValue
-  
+
 
 CSciControl.MarginSetStyle                  PROCEDURE(LONG lLine, LONG lstyle) !,VIRTUAL
 ! Set the style number for the text margin for a line
@@ -9976,9 +9975,9 @@ CSciControl.MarginSetStyle                  PROCEDURE(LONG lLine, LONG lstyle) !
   IF SELF.bInitialised
      SELF.SendMessage(SCI_MarginSetStyle, lLine, lstyle)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.MarginGetStyle                  PROCEDURE(LONG lLine) !,LONG,VIRTUAL
 ! Get the style number for the text margin for a line
@@ -9988,9 +9987,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_MarginGetStyle, lLine, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.MarginSetStyles                 PROCEDURE(LONG lLine, *CSTRING szStyles) !,VIRTUAL
 ! Set the style in the text margin for a line
@@ -9999,9 +9998,9 @@ CSciControl.MarginSetStyles                 PROCEDURE(LONG lLine, *CSTRING szSty
   IF SELF.bInitialised
      SELF.SendMessage(SCI_MarginSetStyles, lLine, ADDRESS(szStyles))
   END
-  
+
   RETURN
-  
+
 
 CSciControl.MarginGetStyles                 PROCEDURE(LONG lLine, *CSTRING szStyles) !,LONG,VIRTUAL
 ! Get the styles in the text margin for a line
@@ -10011,20 +10010,20 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_MarginGetStyles, lLine, ADDRESS(szStyles))
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.MarginTextClearAll              PROCEDURE() !,VIRTUAL
 ! Clear the margin text on all lines
   CODE
- 
+
   IF SELF.bInitialised
      SELF.SendMessage(SCI_MarginTextClearAll, 0, 0)
   END
- 
+
   RETURN
-  
+
 
 CSciControl.MarginSetStyleOffset            PROCEDURE(LONG lStyle) !,VIRTUAL
 ! Get the start of the range of style numbers used for margin text
@@ -10033,9 +10032,9 @@ CSciControl.MarginSetStyleOffset            PROCEDURE(LONG lStyle) !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_MarginSetStyleOffset, lStyle, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.MarginGetStyleOffset            PROCEDURE() !,LONG,VIRTUAL
 ! Get the start of the range of style numbers used for margin text
@@ -10045,9 +10044,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_MarginGetStyleOffset, 0, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.SetMarginOptions                PROCEDURE(LONG lMarginOptions) !,VIRTUAL
 ! Set the margin options.
@@ -10056,9 +10055,9 @@ CSciControl.SetMarginOptions                PROCEDURE(LONG lMarginOptions) !,VIR
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetMarginOptions, lMarginOptions, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.GetMarginOptions                PROCEDURE() !,LONG,VIRTUAL
 ! Get the margin options.
@@ -10068,9 +10067,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetMarginOptions, 0, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.AnnotationSetText               PROCEDURE(LONG lLine, *CSTRING szText) !,VIRTUAL
 ! Set the annotation text for a line
@@ -10079,9 +10078,9 @@ CSciControl.AnnotationSetText               PROCEDURE(LONG lLine, *CSTRING szTex
   IF SELF.bInitialised
      SELF.SendMessage(SCI_AnnotationSetText, lLine, ADDRESS(szText))
   END
-  
+
   RETURN
-  
+
 
 CSciControl.AnnotationGetText               PROCEDURE(LONG lLine, *CSTRING szText) !,LONG,VIRTUAL
 ! Get the annotation text for a line
@@ -10091,9 +10090,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_AnnotationGetText, lLine, ADDRESS(szText))
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.AnnotationSetStyle              PROCEDURE(LONG lLine, LONG lStyle) !,VIRTUAL
 ! Set the style number for the annotations for a line
@@ -10102,32 +10101,32 @@ CSciControl.AnnotationSetStyle              PROCEDURE(LONG lLine, LONG lStyle) !
   IF SELF.bInitialised
      SELF.SendMessage(SCI_AnnotationSetStyle, lLine, lStyle)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.AnnotationGetStyle              PROCEDURE(LONG lLine) !,LONG,VIRTUAL
 ! Get the style number for the annotations for a line
 ReturnValue    LONG(FALSE)
   CODE
- 
+
   IF SELF.bInitialised
      SELF.SendMessage(SCI_AnnotationGetStyle, lLine, 0)
   END
- 
+
   RETURN ReturnValue
-  
+
 
 CSciControl.AnnotationSetStyles             PROCEDURE(LONG lLine, *CSTRING szStyles) !,VIRTUAL
 ! Set the annotation styles for a line
   CODE
- 
+
   IF SELF.bInitialised
      SELF.SendMessage(SCI_AnnotationSetStyles, lLine, ADDRESS(szStyles))
   END
- 
+
   RETURN
-  
+
 
 CSciControl.AnnotationGetStyles             PROCEDURE(LONG lLine, *CSTRING szStyles) !,LONG,VIRTUAL
 ! Get the annotation styles for a line
@@ -10137,9 +10136,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_AnnotationGetStyles, lLine, ADDRESS(szStyles))
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.AnnotationGetLines              PROCEDURE(LONG lLine) !,LONG,VIRTUAL
 ! Get the number of annotation lines for a line
@@ -10149,9 +10148,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_AnnotationGetLines, lLine, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.AnnotationClearAll              PROCEDURE() !,VIRTUAL
 ! Clear the annotations from all lines
@@ -10160,20 +10159,20 @@ CSciControl.AnnotationClearAll              PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_AnnotationClearAll, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.AnnotationSetVisible            PROCEDURE(LONG lVisible) !,VIRTUAL
 ! Set the visibility for the annotations for a view
   CODE
- 
+
   IF SELF.bInitialised
      SELF.SendMessage(SCI_AnnotationSetVisible, lVisible, 0)
   END
- 
+
   RETURN
-  
+
 
 CSciControl.AnnotationGetVisible            PROCEDURE() !,LONG,VIRTUAL
 ! Get the visibility for the annotations for a view
@@ -10183,20 +10182,20 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_AnnotationGetVisible, 0, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.AnnotationSetStyleOffset        PROCEDURE(LONG lStyle) !,VIRTUAL
 ! Get the start of the range of style numbers used for annotations
   CODE
- 
+
   IF SELF.bInitialised
      SELF.SendMessage(SCI_AnnotationSetStyleOffset,lStyle , 0)
   END
- 
+
   RETURN
-  
+
 
 CSciControl.AnnotationGetStyleOffset        PROCEDURE() !,LONG,VIRTUAL
 ! Get the start of the range of style numbers used for annotations
@@ -10206,9 +10205,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_AnnotationGetStyleOffset, 0, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.AddUndoAction                   PROCEDURE(LONG lToken, LONG lFlags) !,VIRTUAL
 ! Add a container action to the undo stack
@@ -10217,9 +10216,9 @@ CSciControl.AddUndoAction                   PROCEDURE(LONG lToken, LONG lFlags) 
   IF SELF.bInitialised
      SELF.SendMessage(SCI_AddUndoAction, lToken, lFlags)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.CharPositionFromPoint           PROCEDURE(LONG X, LONG Y) !,LONG,VIRTUAL
 ! Find the position of a character from a point within the window.
@@ -10229,9 +10228,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_CharPositionFromPoint, X, Y)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.CharPositionFromPointClose      PROCEDURE(LONG X, LONG Y) !,LONG,VIRTUAL
 ! Find the position of a character from a point within the window.
@@ -10242,9 +10241,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_CharPositionFromPointClose, X, Y)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.SetMultipleSelection            PROCEDURE(BOOL bMultipleSelection) !,VIRTUAL
 ! Set whether multiple selections can be made
@@ -10253,9 +10252,9 @@ CSciControl.SetMultipleSelection            PROCEDURE(BOOL bMultipleSelection) !
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetMultipleSelection, bMultipleSelection, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.GetMultipleSelection            PROCEDURE() !,BOOL,VIRTUAL
 ! Whether multiple selections can be made
@@ -10265,9 +10264,9 @@ ReturnValue    BOOL(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetMultipleSelection, 0, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.SetAdditionalSelectionTyping    PROCEDURE(BOOL bAdditionalSelectionTyping) !,VIRTUAL
 ! Set whether typing can be performed into multiple selections
@@ -10276,9 +10275,9 @@ CSciControl.SetAdditionalSelectionTyping    PROCEDURE(BOOL bAdditionalSelectionT
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetAdditionalSelectionTyping, bAdditionalSelectionTyping, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.GetAdditionalSelectionTyping    PROCEDURE() !,BOOL,VIRTUAL
 ! Whether typing can be performed into multiple selections
@@ -10288,9 +10287,9 @@ ReturnValue    BOOL(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetAdditionalSelectionTyping, 0, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.SetAdditionalCaretsBlink        PROCEDURE(BOOL bAdditionalCaretsBlink) !,VIRTUAL
 ! Set whether additional carets will blink
@@ -10299,9 +10298,9 @@ CSciControl.SetAdditionalCaretsBlink        PROCEDURE(BOOL bAdditionalCaretsBlin
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetAdditionalCaretsBlink, bAdditionalCaretsBlink, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.GetAdditionalCaretsBlink        PROCEDURE() !,BOOL,VIRTUAL
 ! Whether additional carets will blink
@@ -10311,20 +10310,20 @@ ReturnValue    BOOL(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetAdditionalCaretsBlink, 0, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.SetAdditionalCaretsVisible      PROCEDURE(BOOL bAdditionalCaretsVisible) !,VIRTUAL
 ! Set whether additional carets are visible
   CODE
- 
+
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetAdditionalCaretsVisible, bAdditionalCaretsVisible, 0)
   END
- 
+
   RETURN
-  
+
 
 CSciControl.GetAdditionalCaretsVisible      PROCEDURE() !,BOOL,VIRTUAL
 ! Whether additional carets are visible
@@ -10334,9 +10333,9 @@ ReturnValue    BOOL(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetAdditionalCaretsVisible, 0, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.GetSelections                   PROCEDURE() !,LONG,VIRTUAL
 ! How many selections are there?
@@ -10346,9 +10345,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetSelections, 0, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.ClearSelections                 PROCEDURE() !,VIRTUAL
 ! Clear selections to a single empty stream selection
@@ -10357,9 +10356,9 @@ CSciControl.ClearSelections                 PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_ClearSelections, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.SetSelection                    PROCEDURE(LONG lCaret,LONG lAnchor) !,LONG,VIRTUAL
 ! Set a simple selection
@@ -10369,9 +10368,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_SetSelection, lCaret, lAnchor)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.AddSelection                    PROCEDURE(LONG lCaret,LONG lAnchor) !,LONG,VIRTUAL
 ! Add a selection
@@ -10381,9 +10380,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_AddSelection, lCaret, lAnchor)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.SetMainSelection                PROCEDURE(LONG lSelection) !,VIRTUAL
 ! Set the main selection
@@ -10392,9 +10391,9 @@ CSciControl.SetMainSelection                PROCEDURE(LONG lSelection) !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetMainSelection, lSelection, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.GetMainSelection                PROCEDURE() !,LONG,VIRTUAL
 ! Which selection is the main selection
@@ -10404,9 +10403,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetMainSelection, 0, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.SetSelectionNCaret              PROCEDURE(LONG lSelection, LONG lPos) !,VIRTUAL
   CODE
@@ -10414,9 +10413,9 @@ CSciControl.SetSelectionNCaret              PROCEDURE(LONG lSelection, LONG lPos
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetSelectionNCaret, lSelection, lPos)
   END
-  
+
   RETURN
-  
+
 CSciControl.GetSelectionNCaret              PROCEDURE(LONG lSelection) !,LONG,VIRTUAL
 ReturnValue    LONG(FALSE)
   CODE
@@ -10424,18 +10423,18 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetSelectionNCaret, lSelection, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 CSciControl.SetSelectionNAnchor             PROCEDURE(LONG lSelection, LONG lPosAnchor) !,VIRTUAL
   CODE
 
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetSelectionNAnchor, lSelection, lPosAnchor)
   END
-  
+
   RETURN
-  
+
 CSciControl.GetSelectionNAnchor             PROCEDURE(LONG lSelection) !,LONG,VIRTUAL
 ReturnValue    LONG(FALSE)
   CODE
@@ -10443,47 +10442,47 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetSelectionNAnchor, lSelection, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 CSciControl.SetSelectionNCaretVirtualSpace  PROCEDURE(LONG lSelection, LONG lSpace) !,VIRTUAL
   CODE
- 
+
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetSelectionNCaretVirtualSpace, lSelection, lSpace)
   END
- 
+
   RETURN
-  
+
 CSciControl.GetSelectionNCaretVirtualSpace  PROCEDURE(LONG lSelection) !,LONG,VIRTUAL
 ReturnValue    LONG(FALSE)
   CODE
- 
+
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetSelectionNCaretVirtualSpace, lSelection, 0)
   END
- 
+
   RETURN ReturnValue
-  
+
 CSciControl.SetSelectionNAnchorVirtualSpace PROCEDURE(LONG lSelection, LONG lSpace) !,VIRTUAL
   CODE
 
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetSelectionNAnchorVirtualSpace, lSelection, lSpace)
   END
-  
+
   RETURN
-  
+
 CSciControl.GetSelectionNAnchorVirtualSpace PROCEDURE(LONG lSelection) !,LONG,VIRTUAL
 ReturnValue    LONG(FALSE)
   CODE
- 
+
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetSelectionNAnchorVirtualSpace, lSelection, 0)
   END
- 
+
   RETURN ReturnValue
-  
+
 
 CSciControl.SetSelectionNStart              PROCEDURE(LONG lselection, LONG lPos) !,VIRTUAL
 ! Sets the position that starts the selection - this becomes the anchor.
@@ -10492,9 +10491,9 @@ CSciControl.SetSelectionNStart              PROCEDURE(LONG lselection, LONG lPos
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetSelectionNStart, lselection, lPos)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.GetSelectionNStart              PROCEDURE(LONG lSelection) !,LONG,VIRTUAL
 ! Returns the position at the start of the selection.
@@ -10504,32 +10503,32 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetSelectionNStart, lSelection, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.SetSelectionNEnd                PROCEDURE(LONG lSelection, LONG lPos) !,VIRTUAL
 ! Sets the position that ends the selection - this becomes the currentPosition.
   CODE
- 
+
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetSelectionNEnd, lSelection, lPos)
   END
- 
+
   RETURN
-  
+
 
 CSciControl.GetSelectionNEnd                PROCEDURE(LONG lSelection) !,LONG,VIRTUAL
 ! Returns the position at the end of the selection.
 ReturnValue    LONG(FALSE)
   CODE
- 
+
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetSelectionNEnd, lSelection, 0)
   END
- 
+
   RETURN ReturnValue
-  
+
 
 CSciControl.SetRectangularSelectionCaret    PROCEDURE(LONG lPos) !,VIRTUAL
   CODE
@@ -10537,9 +10536,9 @@ CSciControl.SetRectangularSelectionCaret    PROCEDURE(LONG lPos) !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetRectangularSelectionCaret, lPos, 0)
   END
-  
+
   RETURN
-  
+
 CSciControl.GetRectangularSelectionCaret    PROCEDURE() !,LONG,VIRTUAL
 ReturnValue    LONG(FALSE)
   CODE
@@ -10547,18 +10546,18 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetRectangularSelectionCaret, 0, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 CSciControl.SetRectangularSelectionAnchor   PROCEDURE(LONG lPosAnchor) !,VIRTUAL
   CODE
 
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetRectangularSelectionAnchor, lPosAnchor, 0)
   END
-  
+
   RETURN
-  
+
 CSciControl.GetRectangularSelectionAnchor   PROCEDURE() !,LONG,VIRTUAL
 ReturnValue    LONG(FALSE)
   CODE
@@ -10566,18 +10565,18 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetRectangularSelectionAnchor, 0, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 CSciControl.SetRectangularSelectionCaretVirtualSpace  PROCEDURE(LONG lSpace) !,VIRTUAL
   CODE
 
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetRectangularSelectionCaretVirtualSpace, lSpace, 0)
   END
-  
+
   RETURN
-  
+
 CSciControl.GetRectangularSelectionCaretVirtualSpace  PROCEDURE() !,LONG,VIRTUAL
 ReturnValue    LONG(FALSE)
   CODE
@@ -10585,18 +10584,18 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetRectangularSelectionCaretVirtualSpace, 0, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 CSciControl.SetRectangularSelectionAnchorVirtualSpace PROCEDURE(LONG lSpace) !,VIRTUAL
   CODE
 
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetRectangularSelectionAnchorVirtualSpace, lSpace, 0)
   END
-  
+
   RETURN
-  
+
 CSciControl.GetRectangularSelectionAnchorVirtualSpace PROCEDURE() !,LONG,VIRTUAL
 ReturnValue    LONG(FALSE)
   CODE
@@ -10604,18 +10603,18 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetRectangularSelectionAnchorVirtualSpace, 0, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 CSciControl.SetVirtualSpaceOptions          PROCEDURE(LONG lVirtualSpaceOptions) !,VIRTUAL
   CODE
 
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetVirtualSpaceOptions, lVirtualSpaceOptions, 0)
   END
-  
+
   RETURN
-  
+
 CSciControl.GetVirtualSpaceOptions          PROCEDURE() !,LONG,VIRTUAL
 ReturnValue    LONG(FALSE)
   CODE
@@ -10623,9 +10622,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetVirtualSpaceOptions, 0, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 
 CSciControl.SetRectangularSelectionModifier PROCEDURE(LONG lModifier) !,VIRTUAL
@@ -10634,13 +10633,13 @@ CSciControl.SetRectangularSelectionModifier PROCEDURE(LONG lModifier) !,VIRTUAL
 ! for moving windows.
 ! Valid values are SCMOD_CTRL(default), SCMOD_ALT, or SCMOD_SUPER.
   CODE
- 
+
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetRectangularSelectionModifier, lModifier, 0)
   END
- 
+
   RETURN
-  
+
 
 CSciControl.GetRectangularSelectionModifier PROCEDURE() !,LONG,VIRTUAL
 ! Get the modifier key used for rectangular selection.
@@ -10650,9 +10649,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetRectangularSelectionModifier, 0, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.SetAdditionalSelFore            PROCEDURE(LONG lFore) !,VIRTUAL
 ! Set the foreground colour of additional selections.
@@ -10662,9 +10661,9 @@ CSciControl.SetAdditionalSelFore            PROCEDURE(LONG lFore) !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetAdditionalSelFore, lFore, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.SetAdditionalSelBack            PROCEDURE(LONG lBack) !,VIRTUAL
 ! Set the background colour of additional selections.
@@ -10674,9 +10673,9 @@ CSciControl.SetAdditionalSelBack            PROCEDURE(LONG lBack) !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetAdditionalSelBack, lBack, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.SetAdditionalSelAlpha           PROCEDURE(LONG lAlpha) !,VIRTUAL
 ! Set the alpha of the selection.
@@ -10685,9 +10684,9 @@ CSciControl.SetAdditionalSelAlpha           PROCEDURE(LONG lAlpha) !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetAdditionalSelAlpha, lAlpha, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.GetAdditionalSelAlpha           PROCEDURE() !,LONG,VIRTUAL
 ! Get the alpha of the selection.
@@ -10697,9 +10696,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetAdditionalSelAlpha, 0, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.SetAdditionalCaretFore          PROCEDURE(LONG lFore) !,VIRTUAL
 ! Set the foreground colour of additional carets.
@@ -10708,80 +10707,80 @@ CSciControl.SetAdditionalCaretFore          PROCEDURE(LONG lFore) !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetAdditionalCaretFore, lFore, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.GetAdditionalCaretFore          PROCEDURE() !,LONG,VIRTUAL
 ! Get the foreground colour of additional carets.
 ReturnValue    LONG(FALSE)
   CODE
- 
+
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetAdditionalCaretFore, 0, 0)
   END
- 
+
   RETURN ReturnValue
-  
+
 
 CSciControl.RotateSelection                 PROCEDURE() !,VIRTUAL
 ! Set the main selection to the next selection.
   CODE
- 
+
   IF SELF.bInitialised
      SELF.SendMessage(SCI_RotateSelection, 0, 0)
   END
- 
+
   RETURN
-  
+
 
 CSciControl.SwapMainAnchorCaret             PROCEDURE() !,VIRTUAL
 ! Swap that caret and anchor of the main selection.
   CODE
- 
+
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SwapMainAnchorCaret, 0, 0)
   END
- 
+
   RETURN
-  
+
 
 CSciControl.ChangeLexerState                PROCEDURE(LONG lStart, LONG lEnd) !,LONG,VIRTUAL
 ! Indicate that the internal state of a lexer has changed over a range and therefore
 ! there may be a need to redraw.
 ReturnValue    LONG(FALSE)
   CODE
-  
+
   IF SELF.bInitialised
      SELF.SendMessage(SCI_ChangeLexerState, lStart, lEnd)
   END
 
   RETURN ReturnValue
-  
+
 
 CSciControl.ContractedFoldNext              PROCEDURE(LONG lLineStart) !,LONG,VIRTUAL
 ! Find the next line at or after lineStart that is a contracted fold header line.
 ! Return -1 when no more lines.
 ReturnValue    LONG(FALSE)
   CODE
-  
+
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_ContractedFoldNext, lLineStart, 0)
   END
 
   RETURN ReturnValue
-  
+
 
 CSciControl.VerticalCentreCaret             PROCEDURE() !,VIRTUAL
 ! Centre current line in window.
   CODE
- 
+
   IF SELF.bInitialised
      SELF.SendMessage(SCI_VerticalCentreCaret, 0, 0)
   END
- 
+
   RETURN
-  
+
 
 CSciControl.MoveSelectedLinesUp             PROCEDURE() !,VIRTUAL
 ! Move the selected lines up one line, shifting the line above after the selection
@@ -10790,9 +10789,9 @@ CSciControl.MoveSelectedLinesUp             PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_MoveSelectedLinesUp, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.MoveSelectedLinesDown           PROCEDURE() !,VIRTUAL
 ! Move the selected lines down one line, shifting the line below before the selection
@@ -10801,9 +10800,9 @@ CSciControl.MoveSelectedLinesDown           PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_MoveSelectedLinesDown, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.SetIdentifier                   PROCEDURE(LONG lIdentifier) !,VIRTUAL
 ! Set the identifier reported as idFrom in notification messages.
@@ -10812,9 +10811,9 @@ CSciControl.SetIdentifier                   PROCEDURE(LONG lIdentifier) !,VIRTUA
   IF SELF.bInitialised
      SELF.SendMessage(SCI_SetIdentifier, lIdentifier, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.GetIdentifier                   PROCEDURE() !,LONG,VIRTUAL
 ! Get the identifier.
@@ -10824,9 +10823,9 @@ ReturnValue    LONG(FALSE)
   IF SELF.bInitialised
      ReturnValue = SELF.SendMessage(SCI_GetIdentifier, 0, 0)
   END
-  
+
   RETURN ReturnValue
-  
+
 
 CSciControl.RGBAImageSetWidth               PROCEDURE(LONG lWidth) !,VIRTUAL
 ! Set the width for future RGBA image data.
@@ -10835,20 +10834,20 @@ CSciControl.RGBAImageSetWidth               PROCEDURE(LONG lWidth) !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_RGBAImageSetWidth, lWidth, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.RGBAImageSetHeight              PROCEDURE(LONG lHeight) !,VIRTUAL
 ! Set the height for future RGBA image data.
   CODE
- 
+
   IF SELF.bInitialised
      SELF.SendMessage(SCI_RGBAImageSetHeight, lHeight, 0)
   END
- 
+
   RETURN
-  
+
 
 CSciControl.MarkerDefineRGBAImage           PROCEDURE(LONG lMarkerNumber, *STRING sPixels) !,VIRTUAL
 ! Define a marker from RGBA data.
@@ -10858,9 +10857,9 @@ CSciControl.MarkerDefineRGBAImage           PROCEDURE(LONG lMarkerNumber, *STRIN
   IF SELF.bInitialised
      SELF.SendMessage(SCI_MarkerDefineRGBAImage, lMarkerNumber, ADDRESS(sPixels))
   END
-  
+
   RETURN
-  
+
 
 CSciControl.RegisterRGBAImage               PROCEDURE(LONG lType, *STRING sPixels) !,VIRTUAL
 ! Register an RGBA image for use in autocompletion lists.
@@ -10870,9 +10869,9 @@ CSciControl.RegisterRGBAImage               PROCEDURE(LONG lType, *STRING sPixel
   IF SELF.bInitialised
      SELF.SendMessage(SCI_RegisterRGBAImage, lType, ADDRESS(sPixels))
   END
-  
+
   RETURN
-  
+
 
 CSciControl.ScrollToStart                   PROCEDURE() !,VIRTUAL
 ! Scroll to start of document.
@@ -10881,9 +10880,9 @@ CSciControl.ScrollToStart                   PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_ScrollToStart, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 CSciControl.ScrollToEnd                     PROCEDURE() !,VIRTUAL
 ! Scroll to end of document.
@@ -10892,9 +10891,9 @@ CSciControl.ScrollToEnd                     PROCEDURE() !,VIRTUAL
   IF SELF.bInitialised
      SELF.SendMessage(SCI_ScrollToEnd, 0, 0)
   END
-  
+
   RETURN
-  
+
 
 
 
@@ -10937,8 +10936,8 @@ ReturnValue LONG,AUTO
   END
 
   RETURN ReturnValue                        ! Exit Procedure
-  
-  
+
+
 ! =======================================================================================
 ! CSciControl.CreateLoader
 ! purpose:
@@ -10946,7 +10945,7 @@ ReturnValue LONG,AUTO
 ! outputs:  Document pointer
 ! returns:
 ! =======================================================================================
-CSciControl.CreateLoader   PROCEDURE(LONG lBytes)  !,LONG,VIRTUAL  
+CSciControl.CreateLoader   PROCEDURE(LONG lBytes)  !,LONG,VIRTUAL
 
 ReturnValue LONG,AUTO
 
@@ -11204,7 +11203,7 @@ ReturnValue LONG(FALSE)
 ! purpose:  Retrieve the number of bits the current lexer needs for styling.
 ! inputs :
 ! outputs:
-! returns:  StyleBitsNeeded 
+! returns:  StyleBitsNeeded
 ! =======================================================================================
 CSciControl.GetStyleBitsNeeded   PROCEDURE() !,LONG,VIRTUAL
 
@@ -11328,7 +11327,7 @@ ReturnValue LONG(FALSE)
      ReturnValue = 0
   END
 
-  RETURN ReturnValue                        ! Exit Procedure 
+  RETURN ReturnValue                        ! Exit Procedure
 
 
 ! =======================================================================================
@@ -11362,8 +11361,8 @@ ReturnValue LONG(FALSE)
 ! CSciControl.GetWindowRect
 ! purpose:  Get client coordinates for bounding region
 ! outputs:  SELF.rc is filled with proper client coordinates
-! inputs : 
-! returns:  
+! inputs :
+! returns:
 ! =======================================================================================
 CSciControl.GetWindowRect         PROCEDURE()   !,PROTECTED
 
@@ -11399,9 +11398,9 @@ pt  LIKE(POINT)
 ! =======================================================================================
 ! CSciControl.SetWindowPos
 ! purpose:  Position the control window
-! outputs:  
-! inputs : 
-! returns:  
+! outputs:
+! inputs :
+! returns:
 ! =======================================================================================
 CSciControl.SetWindowPos          PROCEDURE()   !,PROTECTED
 
@@ -11425,9 +11424,9 @@ CSciControl.SetWindowPos          PROCEDURE()   !,PROTECTED
 ! =======================================================================================
 ! CSciControl.SendMessage
 ! purpose:  Provide access to scintilla control the fast way
-! outputs:  
-! inputs : 
-! returns:  
+! outputs:
+! inputs :
+! returns:
 ! =======================================================================================
 CSciControl.SendMessage PROCEDURE(LONG uMsg, LONG wParam, LONG lParam)   !LONG,PROTECTED,PROC
 
@@ -11464,7 +11463,7 @@ CSciControl.Kill PROCEDURE
 
      ! Destroy the Window
 ?    ASSERT(SELF.hWnd <> 0)
-     IF SELF.hWnd <> 0                          
+     IF SELF.hWnd <> 0
         DestroyWindow(SELF.hWnd)
         SELF.hWnd = 0
      END
@@ -11555,7 +11554,7 @@ CSciControl.SetAlerts PROCEDURE
 ! CSciControl.TakeEvent
 ! purpose:  Process the current ACCEPT loop event.
 !           The TakeEvent method processes all window events and returns a value indicating
-!           whether ACCEPT loop processing is complete and should stop. 
+!           whether ACCEPT loop processing is complete and should stop.
 ! inputs :
 ! outputs:
 ! returns:  BYTE
@@ -11641,7 +11640,7 @@ CSciControl.UpdateWindow PROCEDURE
 
 
 !§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
-! WindowComponent Methods 
+! WindowComponent Methods
 !§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§§
 
 
@@ -11754,7 +11753,7 @@ CSciControl.WindowComponent.Update PROCEDURE
 !           certain conditions set by the WindowComponent object.
 ! inputs :
 ! outputs:
-! returns:  
+! returns:
 ! =======================================================================================
 CSciControl.WindowComponent.UpdateWindow PROCEDURE
 
@@ -11889,8 +11888,8 @@ y                         LONG          ! SCN_DWELLSTART, SCN_DWELLEND
            END
         END
      END
-     
-  OF WM_COMMAND  
+
+  OF WM_COMMAND
      IF BSHIFT(BAND(wParam,0ffff0000h),-16) = SCEN_CHANGE
         hwndControl = GetDlgItem(hWnd, BAND(wParam,0ffffh))
         IF hwndControl <> 0
@@ -11917,7 +11916,7 @@ y                         LONG          ! SCN_DWELLSTART, SCN_DWELLEND
               END
            END
         END
-     ELSIF BSHIFT(BAND(wParam,0ffff0000h),-16) = SCEN_KILLFOCUS   
+     ELSIF BSHIFT(BAND(wParam,0ffff0000h),-16) = SCEN_KILLFOCUS
         hwndControl = GetDlgItem(hWnd, BAND(wParam,0ffffh))
         IF hwndControl <> 0
            szClassName = ''
@@ -11938,7 +11937,7 @@ y                         LONG          ! SCN_DWELLSTART, SCN_DWELLEND
      ! When the Scintilla edit control was created, we gave it an id.
      ! This and the hWnd of the control can be used for identification
      ! of the notification message.  To get the hwnd of the control
-     ! we placed the address of our class instance in the USERDATA of 
+     ! we placed the address of our class instance in the USERDATA of
      ! thecontrol window.
      ! Notify messages can come from anywhere and there may be other
      ! controls that generate notification messages that are using the
@@ -11970,13 +11969,13 @@ y                         LONG          ! SCN_DWELLSTART, SCN_DWELLEND
                  IF NM.hwndFrom = thisControl.hWnd AND NM.idFrom = thisControl.id
                     POST(NM.Code,thisControl.feq,thisControl.thread)
                  END
-              OF    SCN_UPDATEUI 
+              OF    SCN_UPDATEUI
                  SCN &= (lParam)
                  thisControl.Updated = SCN.updated
                  IF NM.hwndFrom = thisControl.hWnd AND NM.idFrom = thisControl.id
                     POST(NM.Code,thisControl.feq,thisControl.thread)
                  END
-              OF    SCN_DOUBLECLICK   
+              OF    SCN_DOUBLECLICK
               !   SCN &= (lParam)
               !   thisControl.HotSpotClickPosition = SCN.Position
               !   IF NM.hwndFrom = thisControl.hWnd AND NM.idFrom = thisControl.id

@@ -24,7 +24,6 @@ WHEN  ('Translator') ('')
 %ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 0
 
 %ProgramAuthor DEFAULT  ('')
-%Repository DEFAULT  ('')
 %ProgramIcon DEFAULT  ('')
 %MessageDescription LONG  (1)
 %GlobalExternal LONG  (0)
@@ -56,7 +55,6 @@ WHEN  ('Translator') ('')
 %VistaManifestExecutionLevel DEFAULT  ('asInvoker')
 %VistaManifestUIAccess LONG  (0)
 %NoThemedControlsDependency LONG  (0)
-%VistaManifestdpiAware LONG  (1)
 %VistaManifestDependentAssembly MULTI LONG  ()
 %VistaManifestDependentAssemblyName DEPEND %VistaManifestDependentAssembly DEFAULT TIMES 0
 
@@ -243,8 +241,7 @@ WHEN  ('Translator') (0)
 
 %NewClassProperty DEPEND %NewClassPropertyItems DEFAULT TIMES 0
 
-%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 1
-WHEN  ('ErrorManager')TIMES 0
+%NewClassDataType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
 
 %NewClassOtherType DEPEND %NewClassPropertyItems DEFAULT TIMES 0
 
@@ -270,8 +267,7 @@ WHEN  ('ErrorManager')TIMES 0
 
 %ClassProperty DEPEND %ClassPropertyItems DEFAULT TIMES 0
 
-%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 1
-WHEN  ('ErrorManager')TIMES 0
+%ClassDataType DEPEND %ClassPropertyItems DEFAULT TIMES 0
 
 %ClassOtherType DEPEND %ClassPropertyItems DEFAULT TIMES 0
 
@@ -332,15 +328,10 @@ WHEN  ('') ('Use Default')
 %OverrideLazyOpen DEPEND %File DEFAULT TIMES 1
 WHEN  ('') ('Use Default')
 
-%OverrideDoNotAssertOnCloseMisuse DEPEND %File LONG TIMES 1
-WHEN  ('') (0)
-
-%StandardExternalModule DEPEND %Module LONG TIMES 5
+%StandardExternalModule DEPEND %Module LONG TIMES 3
 WHEN  ('') (1)
 WHEN  ('Scintilla.clw') (1)
 WHEN  ('Scintilla001.clw') (1)
-WHEN  ('scintilla.clw') (1)
-WHEN  ('scintilla001.clw') (1)
 
 %NoGenerateGlobals LONG  (0)
 %WindowManagerType DEFAULT  ('WindowManager')
@@ -440,57 +431,36 @@ WHEN  ('scintilla001.clw') (1)
 %AppTemplateFamily DEFAULT  ('ABC')
 %CWTemplateVersion DEFAULT  ('v10.0')
 %ABCVersion DEFAULT  ('10000')
+%Repository DEFAULT  ('')
+%VistaManifestdpiAware LONG  (1)
+%OverrideDoNotAssertOnCloseMisuse DEPEND %File LONG TIMES 1
+WHEN  ('') (0)
+
 [PERSIST]
 %SaveCreateLocalMap DEFAULT  ('1')
-%GenerationCompleted DEPEND %Module DEFAULT TIMES 4
+%GenerationCompleted DEPEND %Module DEFAULT TIMES 2
 WHEN  ('Scintilla.clw') ('1')
-WHEN  ('Scintilla001.clw') ('')
-WHEN  ('scintilla.clw') ('')
-WHEN  ('scintilla001.clw') ('')
+WHEN  ('Scintilla001.clw') ('1')
 
 %LastTarget32 DEFAULT  ('1')
 %LastProgramExtension DEFAULT  ('EXE')
-%LastApplicationDebug DEFAULT  ('')
+%LastApplicationDebug DEFAULT  ('1')
 %LastApplicationLocalLibrary DEFAULT  ('')
 [PROJECT]
+-- NAMESPACE Scintilla
 #system win32 exe
 #model clarion dll
-#compile "scintilla.clw" -- GENERATED
-#compile "scintilla001.clw" -- GENERATED
-#link "scintilla.EXE"
+#pragma define(_SCIDllMode_=>0)
+#pragma define(_SCILinkMode_=>1)
+#pragma debug(vid=>full)
+#compile "Scintilla.clw" -- GENERATED
+#compile "Scintilla001.clw" -- GENERATED
+#link "Scintilla.EXE"
 [PROGRAM]
 [COMMON]
 FROM ABC ABC
-MODIFIED '2015/07/17' '11:20:03'
+MODIFIED '2017/07/18' '18:55:20'
 [EMBED]
-EMBED %BeforeGlobalIncludes
-[DEFINITION]
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 3500
-PROPERTY:END
-!region Notices
-! ================================================================================
-! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
-!
-!    This file is part of Devuna-Scintilla (https://github.com/Devuna/Devuna-Scintilla)
-!
-!    Devuna-Scintilla is free software: you can redistribute it and/or modify
-!    it under the terms of the GNU General Public License as published by
-!    the Free Software Foundation, either version 3 of the License, or
-!    (at your option) any later version.
-!
-!    Devuna-Scintilla is distributed in the hope that it will be useful,
-!    but WITHOUT ANY WARRANTY; without even the implied warranty of
-!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-!    GNU General Public License for more details.
-!
-!    You should have received a copy of the GNU General Public License
-!    along with Devuna-Scintilla.  If not, see <http://www.gnu.org/licenses/>.
-! ================================================================================
-!endregion Notices
-[END]
 EMBED %AfterGlobalIncludes
 [DEFINITION]
 [SOURCE]
@@ -499,38 +469,64 @@ PRIORITY 4000
 PROPERTY:END
    INCLUDE('CSciControl.inc'),ONCE
 [END]
+EMBED %BeforeGlobalIncludes
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+!region Notices
+! ================================================================================
+! Notice : Copyright (C) 2017, Devuna
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
+!
+!    This file is part of Devuna-Scintilla (https://github.com/Devuna/Devuna-Scintilla)
+!
+!    Devuna-Scintilla is free software: you can redistribute it and/or modify
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
+!
+!    Devuna-Scintilla is distributed in the hope that it will be useful,
+!    but WITHOUT ANY WARRANTY; without even the implied warranty of
+!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+!    MIT License for more details.
+!
+!    You should have received a copy of the GNU General Public License
+!    along with Devuna-Scintilla.  If not, see <https://opensource.org/licenses/MIT>.
+! ================================================================================
+!endregion Notices
+[END]
 [END]
 [END]
 [MODULE]
 [COMMON]
 FROM ABC GENERATED
-MODIFIED '2017/06/29' ' 8:27:02'
+MODIFIED '2017/07/18' '18:55:37'
 [EMBED]
 EMBED %StartOfModule
 [DEFINITION]
 [SOURCE]
 PROPERTY:BEGIN
-PRIORITY 1300
+PRIORITY 4000
 PROPERTY:END
 !region Notices
 ! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 !
 !    This file is part of Devuna-Scintilla (https://github.com/Devuna/Devuna-Scintilla)
 !
 !    Devuna-Scintilla is free software: you can redistribute it and/or modify
-!    it under the terms of the GNU General Public License as published by
-!    the Free Software Foundation, either version 3 of the License, or
-!    (at your option) any later version.
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
 !
 !    Devuna-Scintilla is distributed in the hope that it will be useful,
 !    but WITHOUT ANY WARRANTY; without even the implied warranty of
 !    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-!    GNU General Public License for more details.
+!    MIT License for more details.
 !
 !    You should have received a copy of the GNU General Public License
-!    along with Devuna-Scintilla.  If not, see <http://www.gnu.org/licenses/>.
+!    along with Devuna-Scintilla.  If not, see <https://opensource.org/licenses/MIT>.
 ! ================================================================================
 !endregion Notices
 [END]
@@ -539,7 +535,7 @@ PROPERTY:END
 NAME Main
 [COMMON]
 FROM ABC Window
-MODIFIED '2017/06/29' ' 8:27:47'
+MODIFIED '2017/07/18' '18:56:55'
 [DATA]
 [SCREENCONTROLS]
 ! PROMPT('Scintilla:'),USE(?Scintilla:Prompt)
@@ -562,6 +558,36 @@ szFilename                 &CSTRING
 ! STRING(@s19),USE(szTextBuffer)
 szTextBuffer               &CSTRING
 !!> GUID('545521f8-9165-4bd0-8d4d-6e5ba096933c'),PROMPT('sz Text Buffer:'),HEADER('sz Text Buffer'),PICTURE(@s19),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('Open File:'),USE(?OpenFile:Prompt)
+! ENTRY(@s20),USE(OpenFile)
+[REPORTCONTROLS]
+! STRING(@s20),USE(OpenFile)
+OpenFile                   PROCEDURE(*CSTRING szFilename),BOOL,PROC,VIRTUAL
+!!> GUID('bcae0e7a-2016-4f43-ab9e-2f480b080080'),PROMPT('Open File:'),HEADER('Open File'),PICTURE(@s20),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('Set Buffer:'),USE(?SetBuffer:Prompt)
+! ENTRY(@s20),USE(SetBuffer)
+[REPORTCONTROLS]
+! STRING(@s20),USE(SetBuffer)
+SetBuffer                  PROCEDURE()
+!!> GUID('7e46cbbe-0424-441a-8948-05db4e40e097'),PROMPT('Set Buffer:'),HEADER('Set Buffer'),PICTURE(@s20),TYPEMODE(INS)
+                         END
+!!> GUID('fd4e94a7-a35b-44be-a1d3-82f3181207e3')
+[SCREENCONTROLS]
+! PROMPT('Control Is Initialized:'),USE(?ControlIsInitialized:Prompt)
+! ENTRY(@n3),USE(ControlIsInitialized)
+[REPORTCONTROLS]
+! STRING(@n3),USE(ControlIsInitialized)
+ControlIsInitialized     BYTE
+!!> GUID('d4c0f2a1-8b90-418a-8036-b1b977f68b0c'),INITIAL('FALSE'),PROMPT('Control Is Initialized:'),HEADER('Control Is Initialized'),PICTURE(@n3),TYPEMODE(INS)
+[SCREENCONTROLS]
+! PROMPT('Text File Name:'),USE(?TextFileName:Prompt)
+! ENTRY(@s20),USE(TextFileName)
+[REPORTCONTROLS]
+! STRING(@s20),USE(TextFileName)
+TextFileName             CSTRING(21)
+!!> GUID('59e3d450-99f2-40c2-b2a1-42ee3be75dc7'),INITIAL('Scintilla001.clw<0,0,0,0>'),PROMPT('Text File Name:'),HEADER('Text File Name'),PICTURE(@s20),TYPEMODE(INS)
 [PROMPTS]
 %ClassItem UNIQUE DEFAULT  ('Default', 'WindowToolbar')
 %DefaultBaseClassType DEPEND %ClassItem DEFAULT TIMES 2
@@ -757,9 +783,6 @@ WHEN  ('WindowToolbar') (0)
 
 %ProcedureUserBindExpression DEPEND %ProcedureUserBindExpressions DEFAULT TIMES 0
 
-%PreserveVarsLoc MULTI LONG  ()
-%PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
-
 %ExtUITabIcon DEPEND %Control DEFAULT TIMES 0
 
 %ExtUITabStyleOverrideGlobal DEPEND %Control LONG TIMES 0
@@ -882,6 +905,9 @@ WHEN  ('WindowToolbar') (0)
 
 %UnCheckedDisableControlAction DEPEND %UnCheckedDisables DEFAULT TIMES 0
 
+%PreserveVarsLoc MULTI LONG  ()
+%PreserveVarLoc DEPEND %PreserveVarsLoc DEFAULT TIMES 0
+
 %ActiveImageEnable DEPEND %Control LONG TIMES 0
 
 %AIObjectName DEPEND %Control DEFAULT TIMES 0
@@ -917,6 +943,188 @@ WHEN  ('WindowToolbar') (0)
 %AIPressedImgIsVariable DEPEND %Control LONG TIMES 0
 
 [EMBED]
+EMBED %WindowManagerMethodCodeSection
+[INSTANCES]
+WHEN 'Init'
+[INSTANCES]
+WHEN '(),BYTE'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 8005
+PROPERTY:END
+IF Scintilla.Init(Window,?ScintillaControlRegion,1004,0) = Level:Benign
+   ControlIsInitialized = TRUE
+END
+[END]
+[END]
+WHEN 'Kill'
+[INSTANCES]
+WHEN '(),BYTE'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 8500
+PROPERTY:END
+Scintilla.Kill()
+[END]
+[END]
+[END]
+EMBED %WindowEventHandling
+[INSTANCES]
+WHEN 'OpenWindow'
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 5000
+PROPERTY:END
+IF ControlIsInitialized = TRUE
+   IF Scintilla.TakeOpenWindow() = Level:Benign
+      Scintilla.OpenFile(TextFileName)
+   END   
+END
+[END]
+[END]
+EMBED %LocalProcedures
+[DEFINITION]
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+! Scintilla.OpenFile
+! purpose:  Open a file and load contents into Scintilla Control buffer
+! inputs :  *CSTRING szFilename - Name of file to open
+! outputs:  Scintilla Control is loaded with file contents
+! returns:  BYTE
+!           Level:Benign to indicate success
+!           Level:Notify to indicate failure
+! =======================================================================================
+Scintilla.OpenFile PROCEDURE(*CSTRING szFilename) !,BOOL,PROC,VIRTUAL
+
+ReturnValue         BOOL,AUTO
+
+lFileSize           LONG(0)
+
+szExtension         CSTRING(33)
+szMsgText           CSTRING(240)
+szMsg_NoCanDo       CSTRING('Not possible.')
+
+szFileExtension     CSTRING(33)
+
+szAAFileName        CSTRING(256),STATIC
+A_A                 FILE,DRIVER('DOS'),NAME(szAAFileName),PRE(AA),CREATE
+Record                RECORD
+Bytes                    STRING(65535)
+                      END
+                    END
+fh                  SHORT
+fm                  LONG
+ppBuf               LONG 
+pBuf                LONG
+cch                 LONG                
+shortName           CSTRING(260)    
+lFileSizeHigh       LONG
+FILE_MAP_READ       EQUATE(00004h)
+
+  CODE                                      ! Enter Procedure
+  
+  szAAFileName = szFileName
+  SELF.szFileName &= szAAFileName
+
+  OPEN(A_A,ReadOnly+DenyWrite)
+  IF ~ERRORCODE()
+     lFileSize = BYTES(A_A)
+     CLOSE(A_A)
+ 
+     IF ~SELF.szTextBuffer &= NULL                          ! If we already have a buffer allocated
+        DISPOSE(SELF.szTextBuffer)                          !   dispose buffer
+        SELF.szTextBuffer &= NULL                           !   clear reference
+     END
+     SELF.szTextBuffer &= NEW(CSTRING(lFileSize+1))         ! Create a buffer to hold the file
+
+?    ASSERT(~SELF.szTextBuffer &= NULL)
+     IF ~SELF.szTextBuffer &= NULL
+        DO LoadFile
+        SELF.SetBuffer()
+        ReturnValue = TRUE
+     ELSE
+        !Buffer Allocation Error
+        ReturnValue = FALSE
+     END
+  ELSE
+    !open failed
+     ReturnValue = FALSE
+  END
+  
+  RETURN(ReturnValue)                       ! Exit Procedure
+
+! Procedure Routines
+!-------------------------------------------
+LoadFile    ROUTINE
+!-------------------------------------------
+  DATA
+
+lRecSize            LONG(0)                 ! Note new variables to keep track of bytes read
+lBytesRead          LONG(0)                 ! from file and Bytes written to buffer.
+lBytes2Write        LONG(0)
+lBytePtr            LONG(0)
+cc                  LONG
+
+  CODE                                      ! Enter Routine
+  
+  OPEN(A_A,ReadOnly+DenyWrite)
+  IF ~ERRORCODE()
+     lBytesRead = 0                                         ! We haven't read any bytes yet
+     lFileSize  = BYTES(A_A)
+     lRecSize   = SIZE(AA:Bytes)
+
+
+     SETCURSOR(CURSOR:Wait)
+
+     SET(A_A)
+     LOOP
+       NEXT(A_A)                                                        ! Get the next record sized chunk
+       IF ERRORCODE()
+          BREAK
+       ELSE
+          IF (lBytesRead + lrecSize >= lFileSize)                       ! If we have read up to or past the file size
+            lBytes2Write = lFileSize - lBytesRead                       ! Bytes to write to blob is the last "partial" chunk
+          ELSE
+            lBytes2Write = lRecSize                                     ! Else the Byte to write is the full record
+          END
+
+          LOOP lBytePtr =1 TO lBytes2Write                              ! Loop through the record
+            SELF.szTextBuffer[(lBytesRead + lBytePtr)] = A_A:Bytes[lBytePtr] ! Storing the bytes
+          END
+
+          lBytesRead = lBytesRead + lBytes2Write                        ! Increment the byte read
+          IF (lBytesRead >= lFileSize)                                  ! Break if we are up to the file size
+             BREAK
+          END
+       END
+     END
+     CLOSE(A_A)
+     SELF.szTextBuffer[lBytesRead + 1] = '<0>'                          ! *** IMPORTANT ***
+
+     SETCURSOR()
+  END
+
+  EXIT                                      !Exit Routine
+[SOURCE]
+PROPERTY:BEGIN
+PRIORITY 4000
+PROPERTY:END
+Scintilla.SetBuffer  PROCEDURE
+   CODE
+      SELF.SetUndoCollection(FALSE)
+      SELF.EmptyUndoBuffer()
+
+      SELF.SetText(SELF.szTextBuffer)
+
+      SELF.SetUndoCollection(TRUE)
+      SELF.SetSavePoint()
+      RETURN
+[END]
 EMBED %DataSection
 [DEFINITION]
 [SOURCE]
@@ -926,29 +1134,28 @@ PROPERTY:END
 !region Notices
 ! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 !
 !    This file is part of Devuna-Scintilla (https://github.com/Devuna/Devuna-Scintilla)
 !
 !    Devuna-Scintilla is free software: you can redistribute it and/or modify
-!    it under the terms of the GNU General Public License as published by
-!    the Free Software Foundation, either version 3 of the License, or
-!    (at your option) any later version.
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
 !
 !    Devuna-Scintilla is distributed in the hope that it will be useful,
 !    but WITHOUT ANY WARRANTY; without even the implied warranty of
 !    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-!    GNU General Public License for more details.
+!    MIT License for more details.
 !
 !    You should have received a copy of the GNU General Public License
-!    along with Devuna-Scintilla.  If not, see <http://www.gnu.org/licenses/>.
+!    along with Devuna-Scintilla.  If not, see <https://opensource.org/licenses/MIT>.
 ! ================================================================================
 !endregion Notices
-[SOURCE]
-PROPERTY:BEGIN
-PRIORITY 4500
-PROPERTY:END
+[END]
+[END]
+[WINDOW]
+Window  WINDOW('Scintilla Example'),AT(,,530,350),FONT('Microsoft Sans Serif',8),GRAY,SYSTEM
+          REGION,AT(5,5,520,325),USE(?ScintillaControlRegion),HIDE,#ORDINAL(1)
+        END
 
-[END]
-[END]
 [END]

@@ -4,22 +4,21 @@
 !region Notices
 ! ================================================================================
 ! Notice : Copyright (C) 2017, Devuna
-!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 !
 !    This file is part of Devuna-Scintilla (https://github.com/Devuna/Devuna-Scintilla)
 !
 !    Devuna-Scintilla is free software: you can redistribute it and/or modify
-!    it under the terms of the GNU General Public License as published by
-!    the Free Software Foundation, either version 3 of the License, or
-!    (at your option) any later version.
+!    it under the terms of the MIT License as published by
+!    the Open Source Initiative.
 !
 !    Devuna-Scintilla is distributed in the hope that it will be useful,
 !    but WITHOUT ANY WARRANTY; without even the implied warranty of
 !    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-!    GNU General Public License for more details.
+!    MIT License for more details.
 !
-!    You should have received a copy of the GNU General Public License
-!    along with Devuna-Scintilla.  If not, see <http://www.gnu.org/licenses/>.
+!    You should have received a copy of the MIT License
+!    along with Devuna-Scintilla.  If not, see <https://opensource.org/licenses/MIT>.
 ! ================================================================================
 !endregion Notices
 !==============================================================================
@@ -1067,20 +1066,20 @@ top                  LONG
 right                LONG
 bottom               LONG
                   END
-                  
+
 Sci_Point         GROUP,TYPE
 X                    SIGNED
 Y                    SIGNED
                   END
-                  
+
 Sci_RangeToFormat GROUP,TYPE
-hdc	               Sci_SurfaceID
-hdcTarget	         Sci_SurfaceID 
+hdc                    Sci_SurfaceID
+hdcTarget                Sci_SurfaceID
 rc                   LIKE(Sci_Rectangle)
-rcPage	            LIKE(Sci_Rectangle)
-chrg	               LIKE(Sci_CharacterRange)
+rcPage              LIKE(Sci_Rectangle)
+chrg                   LIKE(Sci_CharacterRange)
                   END
-                  
+
 ! RAS.2003.05.15
 !!NMHDR                   GROUP,TYPE
 !!hwndFrom                  UNSIGNED      ! Window handle to the control sending a message.
@@ -1361,7 +1360,7 @@ hWnd                  UNSIGNED,PROTECTED                ! Window handle for scin
 feq                   UNSIGNED,PROTECTED                ! feq of control to recieve notifications
 thread                UNSIGNED,PROTECTED                ! thread to recieve notifications
 hWndRegion            UNSIGNED,PROTECTED                ! Window handle of Clarion control that
-                                                        !    will be used for positioning the 
+                                                        !    will be used for positioning the
                                                         !    class window
 rc                    GROUP,PRE(),PROTECTED             ! holds bounding rectangle for control
 left                    SIGNED

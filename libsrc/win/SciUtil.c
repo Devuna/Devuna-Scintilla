@@ -1,21 +1,20 @@
 // ================================================================================
 // Notice : Copyright (C) 2017, Devuna
-//          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+//          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 //
 //    This file is part of Devuna-Scintilla (https://github.com/Devuna/Devuna-Scintilla)
 //
 //    Devuna-Scintilla is free software: you can redistribute it and/or modify
-//    it under the terms of the GNU General Public License as published by
-//    the Free Software Foundation, either version 3 of the License, or
-//    (at your option) any later version.
+//    it under the terms of the MIT License as published by
+//    the Open Source Initiative.
 //
 //    Devuna-Scintilla is distributed in the hope that it will be useful,
 //    but WITHOUT ANY WARRANTY; without even the implied warranty of
 //    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-//    GNU General Public License for more details.
+//    MIT License for more details.
 //
-//    You should have received a copy of the GNU General Public License
-//    along with Devuna-Scintilla.  If not, see <http://www.gnu.org/licenses/>.
+//    You should have received a copy of the MIT License
+//    along with Devuna-Scintilla.  If not, see <https://opensource.org/licenses/MIT>.
 // ================================================================================
 //
 //********************************************************************************
@@ -206,24 +205,24 @@ static char *bookmarkRedgem[] = {
 /* XPM */
 static char * breakpointRoundedBlue[] = {
 "16 16 18 1",
-" 	c None",
-".	c #446D8C",
-"+	c #6297BF",
-"@	c #7CB7E2",
-"#	c #78A1C2",
-"$	c #4A7392",
-"%	c #6399C2",
-"&	c #7FBAE7",
-"*	c #7FA6C5",
-"=	c #8FC0E5",
-"-	c #9AC0DF",
-";	c #9BB8CF",
-">	c #8FA5B7",
-",	c #7E909E",
-"'	c #66717B",
-")	c #446984",
-"!	c #5A656D",
-"~	c #4C6A80",
+"       c None",
+".      c #446D8C",
+"+      c #6297BF",
+"@      c #7CB7E2",
+"#      c #78A1C2",
+"$      c #4A7392",
+"%      c #6399C2",
+"&      c #7FBAE7",
+"*      c #7FA6C5",
+"=      c #8FC0E5",
+"-      c #9AC0DF",
+";      c #9BB8CF",
+">      c #8FA5B7",
+",      c #7E909E",
+"'      c #66717B",
+")      c #446984",
+"!      c #5A656D",
+"~      c #4C6A80",
 "                ",
 "                ",
 "                ",
@@ -252,7 +251,7 @@ long CallSciMsgProc(long (cdecl *fpSciMsgProc)(long, long, long, long), long ptr
 extern "C"  void * GetXPMData (long lImage)
 {
    void * retVal = 0;
-   
+
    switch(lImage) {
      case 1:
          retVal = &bookmarkBluegem;
@@ -267,4 +266,4 @@ extern "C"  void * GetXPMData (long lImage)
          retVal = &bookmarkBluegem;
    }
    return retVal;
-}   
+}

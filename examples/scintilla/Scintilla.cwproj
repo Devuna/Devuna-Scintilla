@@ -25,16 +25,16 @@
     <check_index>False</check_index>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="scintilla.clw">
+    <Compile Include="Scintilla.clw">
       <Generated>true</Generated>
     </Compile>
-    <Compile Include="scintilla001.clw">
+    <Compile Include="Scintilla001.clw">
       <Generated>true</Generated>
     </Compile>
     <Compile Include="SCINTILLA_BC.CLW">
       <Generated>true</Generated>
     </Compile>
-    <Compile Include="scintilla_BC0.CLW">
+    <Compile Include="Scintilla_BC0.CLW">
       <Generated>true</Generated>
     </Compile>
   </ItemGroup>

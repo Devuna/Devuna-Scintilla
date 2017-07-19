@@ -2,22 +2,21 @@
 #!
 #! ================================================================================
 #! Notice : Copyright (C) 2017, Devuna
-#!          Distributed under LGPLv3 (http://www.gnu.org/licenses/lgpl.html)
+#!          Distributed under the MIT License (https://opensource.org/licenses/MIT)
 #!
 #!    This file is part of Devuna-Scintilla (https://github.com/Devuna/Devuna-Scintilla)
 #!
 #!    Devuna-Scintilla is free software: you can redistribute it and/or modify
-#!    it under the terms of the GNU General Public License as published by
-#!    the Free Software Foundation, either version 3 of the License, or
-#!    (at your option) any later version.
+#!    it under the terms of the MIT License as published by
+#!    the Open Source Initiative.
 #!
 #!    Devuna-Scintilla is distributed in the hope that it will be useful,
 #!    but WITHOUT ANY WARRANTY; without even the implied warranty of
 #!    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-#!    GNU General Public License for more details.
+#!    MIT License for more details.
 #!
-#!    You should have received a copy of the GNU General Public License
-#!    along with Devuna-Scintilla.  If not, see <http://www.gnu.org/licenses/>.
+#!    You should have received a copy of the MIT License
+#!    along with Devuna-Scintilla.  If not, see <https://opensource.org/licenses/MIT>.
 #! ================================================================================
 #!
 #! Scintilla Control Templates
@@ -135,10 +134,10 @@ END
 #!
 #! =======================================================================================
 #! %SciVirtuals
-#! purpose:  
-#! inputs :  
-#! outputs:  
-#!           
+#! purpose:
+#! inputs :
+#! outputs:
+#!
 #! revisions
 #! =========
 #! 2003.03.05   HJC initial source for HJ Calendar control (%CalendarVirtuals)
@@ -151,10 +150,10 @@ END
 #!
 #! =======================================================================================
 #! %ParentCallValid
-#! purpose:  
-#! inputs :  
-#! outputs:  
-#!           
+#! purpose:
+#! inputs :
+#! outputs:
+#!
 #! revisions
 #! =========
 #! 2003.03.05   HJC initial source
@@ -166,10 +165,10 @@ END
 #!
 #! =======================================================================================
 #! %GetControlName
-#! purpose:  
-#! inputs :  
-#! outputs:  
-#!           
+#! purpose:
+#! inputs :
+#! outputs:
+#!
 #! revisions
 #! =========
 #! 2003.03.05   HJC initial source
@@ -181,10 +180,10 @@ END
 #!
 #! =======================================================================================
 #! %GetObjectName
-#! purpose:  
-#! inputs :  
-#! outputs:  
-#!           
+#! purpose:
+#! inputs :
+#! outputs:
+#!
 #! revisions
 #! =========
 #! 2003.03.05   HJC initial source
@@ -196,10 +195,10 @@ END
 #!
 #! =======================================================================================
 #! %HasTemplate
-#! purpose:  
-#! inputs :  
-#! outputs:  
-#!           
+#! purpose:
+#! inputs :
+#! outputs:
+#!
 #! revisions
 #! =========
 #! 2003.03.05   HJC initial source
@@ -208,4 +207,4 @@ END
   #FOR(%ActiveTemplate), WHERE(%ActiveTemplate = %PassedTemplate)
     #RETURN(%True)
   #ENDFOR
-  #RETURN(%False)
+  #RETURN(%False)
